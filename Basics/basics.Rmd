@@ -1,0 +1,101 @@
+---
+title: "Basics"
+author: "Kieran"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Variables
+
+### Integer, Double, Complex
+```{r}
+x <- 2L
+typeof(x)
+
+y <- 2.5
+typeof(y)
+
+z <- 3 + 2i
+typeof(z)
+```
+
+### Character
+```{r}
+a <- "h"
+typeof(a)
+```
+
+### Logical
+```{r}
+q1 <- T
+typeof(q1)
+q2 <- TRUE
+typeof(q2)
+q3 <- F
+q4 <- FALSE
+```
+
+## Operators
+
+### Math
+```{r}
+b <- x+y
+b
+
+c <- x/y
+c
+
+d <- sqrt(x)
+d
+```
+
+### String Concat
+```{r}
+string <- paste("Hello", "World")
+string
+```
+
+### Logical
+* == - equal
+* != - not equal
+* < - less than
+* \> - greater than
+* <= - less than or equal to
+* \>= - greater than or equal to
+* ! - not
+* | - or
+* & - and
+* isTRUE(x) 
+
+## Control Statements
+
+### If
+```{r}
+condition <- TRUE
+if(condition){
+  print("Hello")
+} else {
+  print("Goodbye")
+}
+```
+
+### While
+You need to use the word print within functions to print out variables
+```{r}
+x <- 0
+while(x<3){
+  x <- x + 1
+  print(x)
+}
+```
+
+### For
+```{r}
+for(i in 1:5){
+  print(i)
+}
+```

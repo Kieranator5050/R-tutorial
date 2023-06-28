@@ -1,0 +1,71 @@
+---
+title: "Fundamentals"
+author: "Kieran"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Fundamentals
+
+## Vectors
+* c - the combination function keyword
+* A sequence of data elements, can be thought of as an array.
+  + A single number considered a vector too.
+  + Note all numbers are by default stored as double
+* It is assumed you can only find data elements of the same type
+  + Therefore a vector with different types is converted to 1 type
+* Access elements in vectors using []
+  + The index starts at 1
+  
+### Vector Operations
+* All vector operations can be performed without the need of loops
+  + Each element in the vector is compared to the other vector
+  + In the case where a vector size differs
+    + Vector Recycling will be used. 
+      + The condition here is that the smaller vector needs to be a multiple of the bigger function
+```{r}
+N <- 100
+a <- rnorm(N)
+b <- rnorm(N)
+
+c <- a * b
+```
+      
+### Creating Vectors
+```{r}
+numVector <- c(3,5,10,25,50)
+is.numeric(numVector)
+is.integer(numVector)
+is.double(numVector)
+
+intVector <- c(1L, 2L, 5L)
+is.integer(intVector)
+
+charVector <- c("a", "B23", "Hello", 7)
+charVector
+
+#Access individual elements using []
+charVector[1]
+charVector[-3]
+charVector[1:3] # Choose range of indexes
+charVector[c(1,3,4)] # Choose specific indexes
+```
+
+#### seq
+```{r}
+seq(1,15) # Use sequence instead of : to adjust different params such as step
+1:15
+
+seq(1,15,2)
+```
+
+#### rep
+```{r}
+rep(3, 10) # Repeats an element
+rep("c", 10)
+rep(c(5,10), 10)
+```
