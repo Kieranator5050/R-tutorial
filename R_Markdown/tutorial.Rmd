@@ -1,0 +1,42 @@
+---
+title: "Tutorial"
+author: "Kieran"
+date: "`r Sys.Date()`"
+output: html_document
+
+params:
+    symbol: AMZN
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r echo=FALSE, message=FALSE}
+library(xts)
+library(quantmod)
+
+prices <- getSymbols(params$symbol, auto.assign = FALSE)
+move <- Cl(last(prices)) - Op(last(prices))
+```
+
+# Tutorial
+
+`r params$symbol` Stocks Tutorial
+
+
+
+## Recommendation: `r ifelse(move > 0, "BUY", "SELL")`
+
+`r params$symbol` will `r ifelse(move > 0, "increase", "decrease")` in price during the next trading period
+
+## Chart
+```{r echo=FALSE}
+chartSeries(prices, theme = chartTheme("white", bg.col = "white"))
+```
+
+## Data Frame
+```{r echo=FALSE}
+as.data.frame(prices)[1:5, 1:4]
+```
+
