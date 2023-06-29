@@ -1,0 +1,21 @@
+---
+title: "Matricies"
+author: "Kieran"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Matrix Tutorial
+
+> Access elements using [x,y]
+  + For example : Matrix[1,2]
+  + Access the row using : Matrix[x, ]
+  + Access the column using : Matrix[, y]
+
+```{r}
+Salary
+```
