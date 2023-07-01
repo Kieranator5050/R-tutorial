@@ -1,0 +1,69 @@
+---
+title: "NCB_Class2"
+author: "Kieran"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## NCB Class 2
+```
+library(ggplot2)
+```
+
+### 1) Load Data
+```{r}
+rm(list = ls()) # clear env variables
+options("scipen"=100, digits = 22)# scipen - prevents numbers from being displayed in standard form
+
+data = read.csv(file=file.choose(), stringsAsFactors = TRUE)
+
+View(data)
+```
+
+### 2) Explore Data
+```{r}
+str(data)
+summary(data) # Show : min, 1stQ, Median, Mean, 3rd Quarter, Max
+# Recall categorical variables are represented as factors
+hist(data$H_inc)
+
+d <- density(data$Mavg, na.rm = TRUE)
+plot(d, frame=FALSE, col="BLUE", main="Math Averages")
+
+apply(data, 2, function(m) sum(is.na(m)))
+```
+
+### 3
+```{r}
+data$ID <- NULL
+```
+
+### 4
+```{r}
+str(data$Eavg)
+summary(data$Eavg)
+levels(data$Eavg)
+
+data$temp <- as.numeric(as.character(data$Eavg)) #using as.numeric on a factor uses the index not the value as the numeric value
+data$Eavg <- data$temp
+data$temp <- NULL
+
+data[is.na(data$Eavg), "Eavg"] <- mean(data$Eavg.na.rm = T)
+```
+### 5
+
+### 6
+```{r}
+str(data$H_inc)
+summary(data$H_inc)
+boxplot(data$H_inc, na.rm=T)
+max(data$H_inc, na.rm = T)
+rownames(data[data$H_inc==99999999,])
+data <- data[-301,]
+
+data[is.na(data$H_inc), "H_inc"]
+```
